@@ -1,9 +1,9 @@
 import express from "express";
-import db from "../models/Workout.js";
+import Workout from "../models/Workout.js";
 
 const router = express.Router();
 router.get("/api/workouts", (req, res) => {
-    db.Workout.find({}).then(dbWorkout => {
+    Workout.find({}).then(dbWorkout => {
         dbWorkout.forEach(workout => {
             var total = 0;
             workout.exercises.forEach(e => {
@@ -18,7 +18,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.put("/api/workouts/:id", (req, res) => {
-    db.Workout.findOneAndUpdate(
+    Workout.findOneAndUpdate(
         { _id: req.params.id },
         {
             $inc: { totalDuration: req.body.duration },
@@ -33,7 +33,7 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 router.post("/api/workouts", ({ body }, res) => {
-    db.Workout.create(body).then((dbWorkout => {
+    Workout.create(body).then((dbWorkout => {
         res.json(dbWorkout);
     })).catch(err => {
         res.json(err);
@@ -41,7 +41,7 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({}).then(dbWorkout => {
+    Workout.find({}).then(dbWorkout => {
         console.log("ALL WORKOUTS");
         console.log(dbWorkout);
 
