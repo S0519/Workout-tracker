@@ -7,8 +7,8 @@ Workout tracker is an application which allows users to view the results and sta
 
 
 ## Installation
-In order to install this app: npm i
-In order to run the application: npm start or node server.js
+*In order to install this app: npm i
+*In order to run the application: npm start or node server.js
 
 
 ## URL
